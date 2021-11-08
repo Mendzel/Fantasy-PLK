@@ -1,0 +1,35 @@
+.rules {
+    padding: 5px 15px;
+}
+
+.rule_title {
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.spacer {
+    display: inline-block;
+    width: 50px;
+}
+
+.example {
+    width: 700px;
+    background-color: yellow;
+    border: 2px solid black;
+}
+
+@media screen and (max-width: 425px) {
+    .rules {
+        font-size: 12px;
+    }
+    .rule_title {
+        font-size: 13px;
+    }
+    .spacer {
+        width: 25px;
+    }
+    .example {
+        width: 400px;
+        border: 1px solid black;
+    }
+}

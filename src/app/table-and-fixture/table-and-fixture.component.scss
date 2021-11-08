@@ -1,0 +1,65 @@
+#table {
+  margin-top: 20px;
+}
+
+table {
+  width: 40%;
+  margin: auto;
+}
+
+table img {
+  width: 70px;
+}
+
+.cdk-column-logoURL {
+  padding-top: 2px;
+  width: 100px;
+}
+.cdk-column-result,
+.cdk-column-scoredPoints,
+.cdk-column-pointsDiff,
+.cdk-column-logoURL,
+.cdk-column-points {
+  text-align: center;
+}
+.cdk-column-points,
+.cdk-column-name {
+  font-weight: bold;
+}
+
+.cdk-column-points {
+  font-size: 16px;
+  color: #ff4081;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+a:visited {
+  color: black;
+}
+
+@media screen and (max-width: 425px) {
+  table {
+    width: 100%;
+  }
+  th.mat-header-cell:first-of-type,
+  td.mat-cell:first-of-type,
+  td.mat-footer-cell:first-of-type {
+    padding-left: 2px;
+  }
+  th.mat-header-cell:last-of-type,
+  td.mat-cell:last-of-type,
+  td.mat-footer-cell:last-of-type {
+    padding-right: 2px;
+  }
+  .cdk-column-result,
+  .cdk-column-scoredPoints,
+  .cdk-column-pointsDiff,
+  .cdk-column-logoURL,
+  .cdk-column-points {
+    font-size: 0.7rem;
+    width: 45px;
+  }
+}

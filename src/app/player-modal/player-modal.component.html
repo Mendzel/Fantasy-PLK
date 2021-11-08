@@ -1,0 +1,109 @@
+<div class="modal">
+  <button
+    *ngIf="isAdmin"
+    class="edit_player"
+    mat-icon-button
+    color="primary"
+    (click)="editMode = !editMode"
+  >
+    <mat-icon>edit</mat-icon>
+  </button>
+  <button
+    *ngIf="isAdmin"
+    class="delete_player"
+    mat-icon-button
+    color="warn"
+    [disabled]="!editMode"
+    (click)="onDelete()"
+  >
+    <mat-icon>delete</mat-icon>
+  </button>
+  <div class="player_photo">
+    <img [src]="data.photoURL" [alt]="data.name" />
+  </div>
+  <h1 mat-dialog-title>{{ data.name }}</h1>
+  <mat-dialog-content>
+    <div class="dialog_content" *ngIf="!editMode">
+      <p><span>Wiek: </span>{{ data.age }}</p>
+      <p><span>Pozycja: </span>{{ data.position }}</p>
+      <p>
+        <span>Narodowość: </span
+        ><span class="flag-icon" [ngClass]="flagToUse"></span>
+      </p>
+      <p><span>Drużyna: </span>{{ data.realTeam }}</p>
+      <p *ngIf="data.injury"><span>Kontuzjowany: </span>{{ data.injury }}</p>
+      <hr />
+      <p><span>Gra dla: </span>{{ data.fantasyTeam }}</p>
+      <p><span>Punkty zdobyte w sezonie: </span>{{ data.pointsScored }}</p>
+    </div>
+
+    <div class="edit_form" *ngIf="editMode">
+      <form [formGroup]="editPlayer" (ngSubmit)="onSubmit()">
+        <p>
+          <span>Wiek: </span
+          ><mat-form-field appearance="fill">
+            <input matInput formControlName="age" />
+          </mat-form-field>
+        </p>
+        <p>
+          <span>Pozycja: </span>
+          <mat-form-field appearance="fill">
+            <mat-select formControlName="position">
+              <mat-option
+                *ngFor="let position of positions"
+                [value]="position"
+                >{{ position }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </p>
+        <p>
+          <span>Narodowość: </span>
+          <mat-form-field appearance="fill">
+            <input matInput formControlName="nationality" />
+          </mat-form-field>
+        </p>
+        <p>
+          <span>Drużyna: </span
+          ><mat-form-field appearance="fill">
+            <mat-select formControlName="realTeam">
+              <mat-option *ngFor="let club of clubs" [value]="club">{{
+                club
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </p>
+        <p>
+          <span>Kontuzja: </span
+            ><mat-form-field appearance="fill">
+              <mat-select formControlName="injury">
+                <mat-option value="Tak">Tak</mat-option>
+                <mat-option value="Może zagra">Może zagra</mat-option>
+                <mat-option value="Nie">Nie</mat-option>
+              </mat-select>
+            </mat-form-field>
+        </p>
+        <hr />
+        <p>
+          <span>Gra dla: </span
+          ><mat-form-field appearance="fill">
+            <mat-select formControlName="fantasyTeam">
+              <mat-option *ngFor="let club of fantasyClubs" [value]="club">{{
+                club
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </p>
+        <p>
+          <span>Punkty zdobyte w sezonie: </span
+          ><mat-form-field appearance="fill">
+            <input matInput formControlName="pointsScored" />
+          </mat-form-field>
+        </p>
+        <button mat-raised-button style="color: rgb(7, 252, 7)" type="submit">
+          Zatwierdź zmiany
+        </button>
+      </form>
+    </div>
+  </mat-dialog-content>
+</div>

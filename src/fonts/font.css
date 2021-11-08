@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'FTYKONKRETENCV';
+  src: url('FTYKONKRETENCV.svg#FTYKONKRETENCV') format('svg'),
+       url('FTYKONKRETENCV.ttf') format('truetype'),
+       url('FTYKONKRETENCV.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FtyKonkreteNcv-GpGa';
+  src: url('FtyKonkreteNcv-GpGa.eot');
+  src: url('FtyKonkreteNcv-GpGa.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+

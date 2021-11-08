@@ -1,0 +1,31 @@
+table {
+    width: 100%;
+    cursor: pointer;
+  }
+
+  th.mat-sort-header-sorted {
+    color: black;
+  }
+
+  img {
+    height: 100px;
+    width: 100px;
+  }
+
+  mat-form-field {
+    margin: 20px 10px 0px 30px;
+    width: 300px;
+  }
+
+  mat-label {
+    color: #ff4081;
+  }
+
+  button {
+    margin: 10px 0px 30px 0px;
+  }
+
+  .form_section {
+    width: 50%;
+    margin: auto;
+  }

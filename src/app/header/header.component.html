@@ -1,0 +1,20 @@
+<mat-toolbar color="primary">
+  <img
+    src="https://i.imgur.com/aOscBoG.png"
+    class="logo"
+    alt=""
+  />
+  <a routerLink="/table-and-fixture"><div>TABELA</div></a>
+  <a routerLink="/free-agents" router> <div>WOLNI ZAWODNICY</div> </a>
+  <a class="disactivated" routerLink="/" router> <div>LICYTACJE</div> </a>
+  <a class="disactivated" routerLink="/" router> <div>PLAYOFF</div> </a>
+  <span class="example-spacer"></span>
+  <button
+    mat-icon-button
+    color="accent"
+    class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon"
+  >
+    <mat-icon *ngIf="!isAdmin" routerLink="/login" style="cursor: pointer;">login</mat-icon>
+  </button>
+</mat-toolbar>

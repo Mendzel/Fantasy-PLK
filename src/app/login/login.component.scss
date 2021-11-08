@@ -1,0 +1,19 @@
+mat-form-field {
+    width: 40%;
+}
+
+form {
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+div {
+    width: 100%;
+}
+
+@media screen and (max-width: 425px) {
+    mat-form-field {
+        width: 70%;
+    }
+}

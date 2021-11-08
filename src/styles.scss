@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'FTYKONKRETENCV';
+    src: url('../src/fonts/font.css');
+    src: url('../src/fonts/FTYKONKRETENCV.svg') format('svg'),
+         url('../src/fonts/FTYKONKRETENCV.ttf') format('truetype'),
+         url('../src/fonts/FTYKONKRETENCV.woff') format('woff'),
+         url('../src/fonts/FtyKonkreteNcv-GpGa.eot') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+html, body { height: 100%; }
+body, head { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif !important; }

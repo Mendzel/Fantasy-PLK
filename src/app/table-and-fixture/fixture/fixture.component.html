@@ -1,0 +1,163 @@
+<section class="fixture">
+  <div class="fixture_title">
+    <div class="fixture_title_info">
+      <span
+        ><button
+          mat-icon-button
+          (click)="roundBack()"
+          [disabled]="currentRound === 1"
+        >
+          <mat-icon [ngClass]="{ disabled_button: currentRound === 1 }"
+            >arrow_back</mat-icon
+          >
+        </button></span
+      >Kolejka {{ currentRound
+      }}<span
+        ><button
+          mat-icon-button
+          (click)="roundForward()"
+          [disabled]="currentRound === 14"
+        >
+          <mat-icon [ngClass]="{ disabled_button: currentRound === 14 }"
+            >arrow_forward</mat-icon
+          >
+        </button></span
+      >
+    </div>
+  </div>
+  <div>
+    <mat-grid-list
+      cols="2"
+      rowHeight="3:1"
+      gutterSize="50px"
+      *ngIf="currentRoundFixture"
+    >
+      <div class="tile_container">
+        <a
+          [routerLink]="[
+            '/match-page/' +
+              currentRoundFixture.roundNumber +
+              '/' +
+              currentRoundFixture.matches[0].matchID
+          ]"
+          ><mat-grid-tile>
+            <div class="team_space">
+              <img
+                [src]="assignTeamLogo(currentRoundFixture.matches[0].homeTeam)"
+                [alt]="currentRoundFixture.matches[0].homeTeam"
+              />
+            </div>
+            <div class="score_space">
+              {{ currentRoundFixture.matches[0].homeScore }}
+            </div>
+            <div class="divider">-</div>
+            <div class="score_space">
+              {{ currentRoundFixture.matches[0].awayScore }}
+            </div>
+            <div class="team_space">
+              <img
+                [src]="assignTeamLogo(currentRoundFixture.matches[0].awayTeam)"
+                [alt]="currentRoundFixture.matches[0].awayTeam"
+              />
+            </div> </mat-grid-tile
+        ></a>
+      </div>
+      <div class="tile_container">
+        <a
+          [routerLink]="[
+            '/match-page/' +
+              currentRoundFixture.roundNumber +
+              '/' +
+              currentRoundFixture.matches[1].matchID
+          ]"
+        >
+          <mat-grid-tile>
+            <div class="team_space">
+              <img
+                [src]="assignTeamLogo(currentRoundFixture.matches[1].homeTeam)"
+                [alt]="currentRoundFixture.matches[1].homeTeam"
+              />
+            </div>
+            <div class="score_space">
+              {{ currentRoundFixture.matches[1].homeScore }}
+            </div>
+            <div class="divider">-</div>
+            <div class="score_space">
+              {{ currentRoundFixture.matches[1].awayScore }}
+            </div>
+            <div class="team_space">
+              <img
+                [src]="assignTeamLogo(currentRoundFixture.matches[1].awayTeam)"
+                [alt]="currentRoundFixture.matches[1].awayTeam"
+              />
+            </div>
+          </mat-grid-tile>
+        </a>
+      </div>
+      <div class="tile_container">
+        <a
+          [routerLink]="[
+            '/match-page/' +
+              currentRoundFixture.roundNumber +
+              '/' +
+              currentRoundFixture.matches[2].matchID
+          ]"
+        >
+          <mat-grid-tile>
+            <div class="team_space">
+              <img
+                [src]="assignTeamLogo(currentRoundFixture.matches[2].homeTeam)"
+                [alt]="currentRoundFixture.matches[2].homeTeam"
+              />
+            </div>
+            <div class="score_space">
+              {{ currentRoundFixture.matches[2].homeScore }}
+            </div>
+            <div class="divider">-</div>
+            <div class="score_space">
+              {{ currentRoundFixture.matches[2].awayScore }}
+            </div>
+            <div class="team_space">
+              <img
+                [src]="assignTeamLogo(currentRoundFixture.matches[2].awayTeam)"
+                [alt]="currentRoundFixture.matches[2].awayTeam"
+              />
+            </div>
+          </mat-grid-tile>
+        </a>
+      </div>
+      <div class="tile_container">
+        <a
+          [routerLink]="[
+            '/match-page/' +
+              currentRoundFixture.roundNumber +
+              '/' +
+              currentRoundFixture.matches[3].matchID
+          ]"
+        >
+          <mat-grid-tile>
+            <div class="team_space">
+              <img
+                [src]="assignTeamLogo(currentRoundFixture.matches[3].homeTeam)"
+                [alt]="currentRoundFixture.matches[3].homeTeam"
+              />
+            </div>
+            <div class="score_space">
+              {{ currentRoundFixture.matches[3].homeScore }}
+            </div>
+            <div class="divider">-</div>
+            <div class="score_space">
+              {{ currentRoundFixture.matches[3].awayScore }}
+            </div>
+            <div class="team_space">
+              <img
+                [src]="assignTeamLogo(currentRoundFixture.matches[3].awayTeam)"
+                [alt]="currentRoundFixture.matches[3].awayTeam"
+              />
+            </div>
+          </mat-grid-tile>
+        </a>
+      </div>
+    </mat-grid-list>
+  </div>
+</section>

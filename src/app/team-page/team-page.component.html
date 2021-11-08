@@ -1,0 +1,70 @@
+<div class="page" [ngStyle]="{ 'background-color': team.colorPrimary }" *ngIf="team">
+  <section class="team_info">
+    <div class="team_info_item">
+      <img class="team_info_logo" [src]="team.logoURL" [alt]="team.name" />
+    </div>
+    <div class="team_info_item">
+      <h1
+        class="team_info_item_teamName"
+        [ngStyle]="{ color: team.colorSecondary }"
+      >
+        {{ team.name }}
+      </h1>
+      <div>
+        <h3 [ngStyle]="{ color: team.colorSecondary }">
+          Bilans: {{ team.wins }}-{{ team.loses }}
+        </h3>
+        <h3 [ngStyle]="{ color: team.colorSecondary }">
+          Średnia punktów: {{ team.pointsScored / (team.wins + team.loses) }}
+        </h3>
+        <h3 [ngStyle]="{ color: team.colorSecondary }">
+          Trener: {{ team.coach }}
+        </h3>
+        <h3 [ngStyle]="{ color: team.colorSecondary }">
+          Pozostałe transfery: {{ team.transfersLeft }}
+        </h3>
+      </div>
+    </div>
+  </section>
+  <div class="team_squad">
+    <section class="starting_five team_squad_item">
+      <h1 class="titles" [ngStyle]="{ color: team.colorSecondary }">NAJLEPSZA PIĄTKA</h1>
+      <div class="starting_five_background">
+          <div class="starting_five_background_column">
+            <mat-card class="card_item" *ngFor="let player of bestPlayerOnEachPosition">
+                <img mat-card-image [src]="player.photoURL" alt="player.name">
+                <mat-card-content>
+                  <h3>
+                    {{player.name}}
+                  </h3>
+                  <h3>{{player.position}} | Punkty: {{player.pointsScored}}</h3>
+                </mat-card-content>
+              </mat-card>
+          </div>
+      </div>
+    </section>
+    <section class="players_list team_squad_item">
+      <h1 class="titles" [ngStyle]="{ color: team.colorSecondary }">SKŁAD</h1>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="team.playerList">
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef>Pozycja</th>
+          <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+        </ng-container>
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Zawodnik</th>
+          <td mat-cell *matCellDef="let element">
+            <span class="flag-icon" [ngClass]="appService.assignFlag(element.nationality)"></span> 
+            {{ element.name }}
+            <mat-icon style="color: red;" *ngIf="element.injury === 'Tak'">add</mat-icon>
+            <mat-icon style="color: rgb(255, 174, 0);" *ngIf="element.injury === 'Może zagra'">add</mat-icon>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="pointsScored">
+          <th mat-header-cell *matHeaderCellDef>Punkty</th>
+          <td mat-cell *matCellDef="let element">{{ element.pointsScored }}</td>
+        </ng-container>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="openDialog(row)"></tr>
+      </table>
+    </section>
+  </div>
+</div>

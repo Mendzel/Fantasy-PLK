@@ -1,0 +1,40 @@
+<section class="match_page">
+    <div class="match_page_info">
+        <img class="match_page_info_logo" src="https://i.imgur.com/aOscBoG.png" >
+        <div>
+            <p>Kolejka: {{roundNumber}} <span style="margin-left: 15px;"></span> Mecz Numer: {{matchID}}</p>
+        </div>
+    </div>
+    <div *ngIf="showScorePage && homeTeam && awayTeam">
+        <app-score-page *ngIf="showScorePage" [teamsTableData]="teamsTableData" [roundInfo]="roundInfo" [matchInfo]="matchInfo" [homeTeam]="homeTeam[0]" [awayTeam]="awayTeam[0]"></app-score-page>
+    </div>
+
+    <form [formGroup]="playersSelection" (ngSubmit)="onSubmit()">
+    <div class="players_select_section" *ngIf="!showScorePage">
+        <div class="home_team_info players_select_section_logo" *ngIf="homeTeam">
+            <img class="home_logo" [src]="homeTeam[0].logoURL">
+        </div>
+        <div class="players_select_section_list" *ngIf="homeTeam">
+                <mat-form-field appearance="fill" *ngFor="let position of positions">
+                    <mat-label>{{position}}</mat-label>
+                    <mat-select [formControlName]="position">
+                      <mat-option *ngFor="let player of homeTeam[0].playerList" [value]="player.name">{{player.name}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+        </div>
+        <p class="mobile_divider"></p>
+        <div class="players_select_section_list away_team" style="text-align: end;" *ngIf="awayTeam">
+                <mat-form-field appearance="fill" *ngFor="let position of positions">
+                    <mat-label>{{position}}</mat-label>
+                    <mat-select [formControlName]="'a' + position">
+                      <mat-option *ngFor="let player of awayTeam[0].playerList" [value]="player.name">{{player.name}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <button *ngIf="isAdmin" mat-raised-button color='warn'>Zatwierdź</button>
+        </div>
+        <div class="away_team_info players_select_section_logo" *ngIf="awayTeam">
+            <img class="away_logo" [src]="awayTeam[0].logoURL">
+        </div>
+    </div>
+    </form>
+</section>
