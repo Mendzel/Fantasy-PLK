@@ -56,6 +56,25 @@ mat-icon {
   color: #ff4081;
 }
 
+.liveIcon {
+  color: red;
+  font-size: 20px;
+}
+.blink {
+  animation: blink 2s steps(5, start) infinite;
+  -webkit-animation: blink 1s steps(5, start) infinite;
+}
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+@-webkit-keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
 a {
   text-decoration: none;
   color: black;
@@ -66,6 +85,15 @@ a:active {
 a:visited {
   color: black;
 }
+
+.liveScore {
+  position: absolute;
+  bottom: 50px;
+  font-family: 'Roboto';
+  font-size: 25px;
+  color: red;
+}
+
 
 @media screen and (max-width: 425px) {
   mat-grid-list {
@@ -108,6 +136,14 @@ a:visited {
 
   .score_space {
     font-size: 20px;
+  }
+
+  .liveScore {
+    bottom: 20px;
+    font-size: 20px;
+  }
+  .liveIcon {
+    font-size: 15px;
   }
 }
 

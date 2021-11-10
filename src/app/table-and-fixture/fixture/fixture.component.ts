@@ -28,7 +28,6 @@ export class FixtureComponent implements OnInit {
     this.fetchedFixture = this.dataToSend.fixtureFetched.subscribe(responseData => {
       this.fixture = responseData;
       this.currentRoundFixture = this.fixture[this.currentRound - 1];
-      console.log(this.currentRoundFixture);
     })
   }
 

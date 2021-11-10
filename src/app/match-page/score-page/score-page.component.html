@@ -42,6 +42,13 @@
         <mat-option [value]="false">Nie</mat-option>
       </mat-select>
     </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Live?</mat-label>
+      <mat-select formControlName="isLive">
+        <mat-option [value]="true">Tak</mat-option>
+        <mat-option [value]="false">Nie</mat-option>
+      </mat-select>
+    </mat-form-field>
     <button mat-flat-button type="submit" color="warn">Zatwierdź wynik</button>
   </form>
 </div>

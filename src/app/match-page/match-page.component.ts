@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { find } from 'rxjs/operators';
 import { SELECTION_OPTIONS } from '../constants';
 import { MatchModel } from '../models/match.model';
 import { PlayerModel } from '../models/player.model';
@@ -128,6 +127,13 @@ export class MatchPageComponent implements OnInit {
     this.showScorePage = !this.showScorePage;
     this.createTeamTableData(this.homeTeam[0]);
     this.createTeamTableData(this.awayTeam[0]);
+
+    let editingMatch = this.matchInfo[0];
+    let matchInfoUpdated: any = {
+      ...editingMatch,
+      isLive: true,
+    };
+    this.scorePageService.updateMatchInfo(this.roundInfo[0], matchInfoUpdated);
   }
 
   createTeamTableData(team: TeamModel) {

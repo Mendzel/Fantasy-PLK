@@ -59,8 +59,15 @@
                 [src]="assignTeamLogo(currentRoundFixture.matches[0].awayTeam)"
                 [alt]="currentRoundFixture.matches[0].awayTeam"
               />
-            </div> </mat-grid-tile
-        ></a>
+            </div>
+            <div
+              class="liveScore"
+              *ngIf="currentRoundFixture.matches[0].isLive"
+            >
+              <mat-icon class="liveIcon blink"> adjust </mat-icon> LIVE!
+            </div>
+          </mat-grid-tile></a
+        >
       </div>
       <div class="tile_container">
         <a
@@ -90,6 +97,12 @@
                 [src]="assignTeamLogo(currentRoundFixture.matches[1].awayTeam)"
                 [alt]="currentRoundFixture.matches[1].awayTeam"
               />
+            </div>
+            <div
+              class="liveScore"
+              *ngIf="currentRoundFixture.matches[1].isLive"
+            >
+            <mat-icon class="liveIcon blink"> adjust </mat-icon> LIVE!
             </div>
           </mat-grid-tile>
         </a>
@@ -123,6 +136,12 @@
                 [alt]="currentRoundFixture.matches[2].awayTeam"
               />
             </div>
+            <div
+              class="liveScore"
+              *ngIf="currentRoundFixture.matches[2].isLive"
+            >
+            <mat-icon class="liveIcon blink"> adjust </mat-icon> LIVE!
+            </div>
           </mat-grid-tile>
         </a>
       </div>
@@ -154,6 +173,12 @@
                 [src]="assignTeamLogo(currentRoundFixture.matches[3].awayTeam)"
                 [alt]="currentRoundFixture.matches[3].awayTeam"
               />
+            </div>
+            <div
+              class="liveScore"
+              *ngIf="currentRoundFixture.matches[3].isLive"
+            >
+            <mat-icon class="liveIcon blink"> adjust </mat-icon> LIVE!
             </div>
           </mat-grid-tile>
         </a>

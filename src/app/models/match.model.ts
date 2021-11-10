@@ -7,4 +7,5 @@ export interface MatchModel {
     winner: string,
     isFinished: boolean,
     playersSelected: string[],
+    isLive: boolean,
 }
