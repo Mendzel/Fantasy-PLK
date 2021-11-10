@@ -1,0 +1,95 @@
+.box {
+    width: 90%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin:auto
+}
+
+.team_label {
+    height: 80px;
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.score {
+    height: 80px;
+    width: 40px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.score:after {
+    width: 5px;
+    border-radius: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    content: '';
+}
+
+.teamA, .teamB {
+    background-color: white;
+    color: white;
+}
+
+p {
+    color:lightgray;
+    font-size: 20px;
+    text-align: center;
+}
+
+img {
+    width: 140px;
+    height: 140px;
+    position: relative;
+    bottom: 30px;
+}
+
+span {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0px 20px;
+    font-weight: 600;
+    font-size: 17px;
+    width: 125px;
+}
+
+a {
+    text-decoration: none;
+}
+a:hover {
+    color: #ff4081;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 425px) {
+    span {
+        font-size: 11px;
+        width: 60px;
+        margin: 0px 3px 0px 3px;
+    }
+
+    img {
+        width: 0px;
+        height: 0px;
+    }
+
+    .score {
+        font-size: 22px;
+        width: 20px;
+    }
+
+    p {
+        font-size: 12px;
+    }
+}

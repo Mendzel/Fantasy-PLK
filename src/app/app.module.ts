@@ -22,6 +22,7 @@ import { RulesComponent } from './rules/rules.component';
 import { LoginComponent } from './login/login.component';
 import { PlayoffsComponent } from './playoffs/playoffs.component';
 import { AuctionsComponent } from './auctions/auctions.component';
+import { PlayoffMatchComponent } from './playoffs/playoff-match/playoff-match.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { AuctionsComponent } from './auctions/auctions.component';
     RulesComponent,
     LoginComponent,
     PlayoffsComponent,
-    AuctionsComponent
+    AuctionsComponent,
+    PlayoffMatchComponent
   ],
   imports: [
     BrowserModule,

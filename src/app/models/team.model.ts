@@ -13,4 +13,5 @@ export interface TeamModel {
     pointsConceded: number;
     coach: string;
     transfersLeft: number;
+    playoffColor: string,
 }
