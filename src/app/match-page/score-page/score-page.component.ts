@@ -102,7 +102,7 @@ export class ScorePageComponent implements OnInit {
       };
     }
     this.scorePageService.sendEditedPoints(this.homeTeamTableData);
-    this.liveScore('home');
+    this.liveScore();
   }
   editAwayPointsScored() {
     this.editAwayMode = !this.editAwayMode;
@@ -116,7 +116,7 @@ export class ScorePageComponent implements OnInit {
       };
     }
     this.scorePageService.sendEditedPoints(this.awayTeamTableData);
-    this.liveScore('away');
+    this.liveScore();
   }
 
   homePlayersPoints = new FormGroup({
@@ -157,20 +157,13 @@ export class ScorePageComponent implements OnInit {
     isLive: new FormControl(),
   })
 
-  liveScore(side: string){
+  liveScore(){
     this.checkScore();
     let editingMatch = this.matchInfo[0];
-    let matchInfoUpdated;
-    if(side === 'home'){
-      matchInfoUpdated = {
-        ...editingMatch,
+    let matchInfoUpdated: any = {
+      ...editingMatch,
         homeScore: this.homeScore,
-      };
-    } else if (side === 'away') {
-      matchInfoUpdated = {
-        ...editingMatch,
         awayScore: this.awayScore,
-      };
     }
     this.scorePageService.updateMatchInfo(this.roundInfo[0], matchInfoUpdated);
   }
