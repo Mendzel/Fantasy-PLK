@@ -4,6 +4,7 @@ import { AuctionsComponent } from './auctions/auctions.component';
 import { FreeAgentsComponent } from './free-agents/free-agents.component';
 import { LoginComponent } from './login/login.component';
 import { MatchPageComponent } from './match-page/match-page.component';
+import { PlayoffMatchPageComponent } from './playoffs/playoff-match/playoff-match-page/playoff-match-page.component';
 import { PlayoffsComponent } from './playoffs/playoffs.component';
 import { RulesComponent } from './rules/rules.component';
 import { TableAndFixtureComponent } from './table-and-fixture/table-and-fixture.component';
@@ -18,7 +19,8 @@ const appRoutes: Routes = [
   { path: 'match-page/:round/:matchID', component: MatchPageComponent },
   { path: 'rules', component: RulesComponent },
   { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: 'table-and-fixture', pathMatch: 'full' },
+  { path: 'playoff-match-page', component: PlayoffMatchPageComponent },
+  { path: '', redirectTo: 'playoffs', pathMatch: 'full' },
 ];
 
 @NgModule({

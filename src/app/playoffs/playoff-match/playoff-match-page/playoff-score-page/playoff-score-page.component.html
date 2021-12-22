@@ -1,0 +1,319 @@
+<div class="score">
+    <img [src]="homeTeam.logoURL" class="score_logo">
+    <div class="home_score">
+      <p>{{ homeScore }}</p>
+    </div>
+    <div class="divider">:</div>
+    <div class="away_score">
+      <p>{{ awayScore }}</p>
+    </div>
+    <img [src]="awayTeam.logoURL" class="score_logo">
+  </div>
+  
+  <button
+    *ngIf="!editHomeMode && isAdmin"
+    mat-flat-button
+    color="primary"
+    (click)="editHomePoints()"
+  >
+    Edycja punktów HOME
+  </button>
+  <button
+    *ngIf="!editAwayMode && isAdmin"
+    mat-flat-button
+    color="primary"
+    (click)="editAwayPoints()"
+  >
+    Edycja punktów AWAY
+  </button>
+  <div style="float: right" *ngIf="editMatchScore">
+    <form [formGroup]="scoreForm" (ngSubmit)="confirmScore()">
+      <mat-form-field appearance="fill">
+        <mat-label>Wygrany</mat-label>
+        <mat-select formControlName="winner">
+          <mat-option [value]="homeTeam.name">{{ homeTeam.name }}</mat-option>
+          <mat-option [value]="awayTeam.name">{{ awayTeam.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-flat-button type="submit" color="warn">Zatwierdź wynik</button>
+    </form>
+  </div>
+  <button
+    style="float: right"
+    mat-flat-button
+    color="primary"
+    (click)="editMatchScore = !editMatchScore"
+    *ngIf="!editMatchScore && isAdmin"
+  >
+    Edycja wyniku
+  </button>
+  <section class="score_page">
+    <div class="home_team_logoContainer">
+      <img [src]="homeTeam.logoURL" class="home_logo" />
+    </div>
+    <div class="home_team_table">
+      <form [formGroup]="homePlayersPoints" (ngSubmit)="editHomePointsScored()">
+        <table
+          *ngIf="homeTeamTableData"
+          mat-table
+          [dataSource]="homeTeamTableData.playersSelected"
+          class="mat-elevation-z8"
+        >
+          <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+              <button class="position_indicator" mat-raised-button color="accent">
+                {{ element.position }}
+              </button>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Zawodnik</th>
+            <td mat-cell *matCellDef="let element; let i = index">
+              <img
+                *ngIf="i <= 4"
+                [src]="element.player[0].photoURL"
+                [matTooltip]="element.player[0].name"
+              />
+              <mat-icon
+                class="home_captain"
+                *ngIf="element.multiplier === 1.5"
+                color="warn"
+                style="
+                  margin: 0;
+                  position: absolute;
+                  top: 50%;
+                  left: 70%;
+                  transform: translate(-50%, -50%);
+                "
+                >copyright</mat-icon
+              >
+              <p *ngIf="i > 4">{{ element.player[0].name }}</p>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="realPoints">
+            <th mat-header-cell *matHeaderCellDef>Wartość</th>
+            <td mat-cell *matCellDef="let element">
+              <p *ngIf="!editHomeMode">{{ element.realPoints }}</p>
+              <mat-form-field
+                class="points_update"
+                *ngIf="editHomeMode"
+                appearance="fill"
+              >
+                <input
+                  [formControlName]="element.position"
+                  matInput
+                  placeholder="Wartość"
+                  [value]="element.realPoints"
+                />
+              </mat-form-field>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="matchPoints">
+            <th mat-header-cell *matHeaderCellDef>Punkty</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.realPoints * element.multiplier }}
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr
+            mat-row
+            *matRowDef="let row; columns: displayedColumns"
+            [class]="row.position"
+          ></tr>
+        </table>
+        <mat-form-field *ngIf="editHomeMode" appearance="fill">
+          <mat-label>Kapitan</mat-label>
+          <mat-select formControlName="captain">
+            <mat-option
+              *ngFor="let player of homeTeam.playerList"
+              [value]="player.name"
+              >{{ player.name }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+        <button *ngIf="editHomeMode" type="submit" mat-flat-button color="accent">
+          Zatwierdź punkty HOME
+        </button>
+      </form>
+    </div>
+    <div class="away_team_table">
+      <form [formGroup]="awayPlayersPoints" (ngSubmit)="editAwayPointsScored()">
+        <table
+          *ngIf="awayTeamTableData"
+          mat-table
+          [dataSource]="awayTeamTableData.playersSelected"
+          class="mat-elevation-z8"
+        >
+          <ng-container matColumnDef="a_position">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+              <button class="position_indicator" mat-raised-button color="accent">
+                {{ element.position }}
+              </button>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="a_name">
+            <th mat-header-cell *matHeaderCellDef>Zawodnik</th>
+            <td mat-cell *matCellDef="let element; let i = index">
+              <img
+                *ngIf="i <= 4"
+                [src]="element.player[0].photoURL"
+                [matTooltip]="element.player[0].name"
+              />
+              <mat-icon
+                class="away_captain"
+                *ngIf="element.multiplier === 1.5"
+                color="warn"
+                style="
+                  margin: 0;
+                  position: absolute;
+                  top: 50%;
+                  right: 70%;
+                  transform: translate(-50%, -50%);
+                "
+                >copyright</mat-icon
+              >
+              <p *ngIf="i > 4">{{ element.player[0].name }}</p>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="a_realPoints">
+            <th mat-header-cell *matHeaderCellDef>Wartość</th>
+            <td mat-cell *matCellDef="let element">
+              <p *ngIf="!editAwayMode">{{ element.realPoints }}</p>
+              <mat-form-field *ngIf="editAwayMode" appearance="fill">
+                <input
+                  [formControlName]="element.position"
+                  matInput
+                  placeholder="Wartość"
+                  [value]="element.realPoints"
+                />
+              </mat-form-field>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="a_matchPoints">
+            <th mat-header-cell *matHeaderCellDef>Punkty</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.realPoints * element.multiplier }}
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedAwayColumns"></tr>
+          <tr
+            mat-row
+            *matRowDef="let row; columns: displayedAwayColumns"
+            [class]="row.position"
+          ></tr>
+        </table>
+        <mat-form-field *ngIf="editAwayMode" appearance="fill">
+          <mat-label>Kapitan</mat-label>
+          <mat-select formControlName="captain">
+            <mat-option
+              *ngFor="let player of awayTeam.playerList"
+              [value]="player.name"
+              >{{ player.name }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+        <button
+          *ngIf="editAwayMode && isAdmin"
+          mat-flat-button
+          color="accent"
+          (click)="editAwayPointsScored()"
+        >
+          Zatwierdź punkty AWAY
+        </button>
+      </form>
+    </div>
+  
+    <div class="away_team_table_mobile">
+      <form [formGroup]="awayPlayersPoints" (ngSubmit)="editAwayPointsScored()">
+        <table
+          *ngIf="awayTeamTableData"
+          mat-table
+          [dataSource]="awayTeamTableData.playersSelected"
+          class="mat-elevation-z8"
+        >
+          <ng-container matColumnDef="a_position">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+              <button class="position_indicator" mat-raised-button color="accent">
+                {{ element.position }}
+              </button>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="a_name">
+            <th mat-header-cell *matHeaderCellDef>Zawodnik</th>
+            <td mat-cell *matCellDef="let element; let i = index">
+              <img
+                *ngIf="i <= 4"
+                [src]="element.player[0].photoURL"
+                [matTooltip]="element.player[0].name"
+              />
+              <mat-icon
+                class="away_captain"
+                *ngIf="element.multiplier === 1.5"
+                color="warn"
+                style="
+                  margin: 0;
+                  position: absolute;
+                  top: 50%;
+                  left: 70%;
+                  transform: translate(-50%, -50%);
+                "
+                >copyright</mat-icon
+              >
+              <p *ngIf="i > 4">{{ element.player[0].name }}</p>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="a_realPoints">
+            <th mat-header-cell *matHeaderCellDef>Wartość</th>
+            <td mat-cell *matCellDef="let element">
+              <p *ngIf="!editAwayMode">{{ element.realPoints }}</p>
+              <mat-form-field *ngIf="editAwayMode" appearance="fill">
+                <input
+                  [formControlName]="element.position"
+                  matInput
+                  placeholder="Wartość"
+                  [value]="element.realPoints"
+                />
+              </mat-form-field>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="a_matchPoints">
+            <th mat-header-cell *matHeaderCellDef>Punkty</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.realPoints * element.multiplier }}
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedAwayColumnsMobile"></tr>
+          <tr
+            mat-row
+            *matRowDef="let row; columns: displayedAwayColumnsMobile"
+            [class]="row.position"
+          ></tr>
+        </table>
+        <mat-form-field *ngIf="editAwayMode" appearance="fill">
+          <mat-label>Kapitan</mat-label>
+          <mat-select formControlName="captain">
+            <mat-option
+              *ngFor="let player of awayTeam.playerList"
+              [value]="player.name"
+              >{{ player.name }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+        <button
+          *ngIf="editAwayMode && isAdmin"
+          mat-flat-button
+          color="accent"
+          (click)="editAwayPointsScored()"
+        >
+          Zatwierdź punkty AWAY
+        </button>
+      </form>
+    </div>
+  
+    <div class="away_team_logoContainer">
+      <img [src]="awayTeam.logoURL" class="away_logo" />
+    </div>
+  </section>

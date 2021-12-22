@@ -12,7 +12,7 @@ import { DataToSendService } from 'src/app/service/data-to-send.service';
 export class FixtureComponent implements OnInit {
   teams!: any;
   fixture!: any;
-  defaultRound = 11;
+  defaultRound = 14;
   currentRound: number = 0;
   currentRoundFixture!: RoundModel;
   fetchedTeam!: Subscription;

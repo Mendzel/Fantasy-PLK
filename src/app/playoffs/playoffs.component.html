@@ -4,7 +4,7 @@
     <h1>PLAYOFFS</h1>
   </div>
 
-  <div class="bracket_content" *ngIf="playoffMatches[0][0].team1Data">
+  <div class="bracket_content" *ngIf="playoffMatches">
     <div class="container quarterfinal">
       <app-playoff-match [sideOfBracket]="'left'" [matchInfo]=playoffMatches[0][0]></app-playoff-match>
       <app-playoff-match [sideOfBracket]="'left'" [matchInfo]=playoffMatches[0][3]></app-playoff-match>
@@ -24,3 +24,5 @@
     </div>
   </div>
 </section>
+
+<!-- <button (click)="sendData(restOfGames)">KLIKNIJ</button> -->

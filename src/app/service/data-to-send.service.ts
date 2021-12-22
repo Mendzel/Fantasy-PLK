@@ -14,10 +14,12 @@ export class DataToSendService {
   teams: any = [];
   players: any = [];
   fixture: any = [];
+  playoffMatches: any = [];
   playerFetched = new Subject();
   teamFetched = new Subject();
   fixtureFetched = new Subject();
   playerEdited = new Subject();
+  playoffMatchesFetched = new Subject();
   constructor(private http: HttpClient) { }
 
   getAllPlayers() {
@@ -66,6 +68,22 @@ export class DataToSendService {
       this.fixture = response;
       this.fixtureFetched.next(response);
     });
+  }
+
+  getAllPlayoffPairs() {
+    this.http.get('https://fantasy-plk-default-rtdb.europe-west1.firebasedatabase.app/playoffMatches.json').pipe(
+      map((responseData: any) => {
+        const objectsArray = [];
+        for (const key in responseData) {
+          objectsArray.push({ ...responseData[key], key: key});
+        }
+        return objectsArray;
+      })
+    )
+    .subscribe((response) => {
+      this.playoffMatches = response;
+      this.playoffMatchesFetched.next(response);
+    })
   }
 
   getTeamPlayers(teamName: string) {

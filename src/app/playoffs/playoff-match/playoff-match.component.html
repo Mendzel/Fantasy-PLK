@@ -1,29 +1,29 @@
 <div class="box" *ngIf="sideOfBracket === 'left'">
-    <div class="team_label teamA" [ngStyle]="{'background-color': matchInfo.team1Data.playoffColor}">
+    <div *ngIf="matchInfo.team1Data" class="team_label teamA" [ngStyle]="{'background-color': matchInfo.team1Data.playoffColor}">
         <span style="text-align: left;">{{matchInfo.team1Data.name}}</span>
         <img [src]="matchInfo.team1Data.monoLogoURL" alt="">
         <div class="score">{{matchInfo.team1Wins}}</div>
     </div>
 
-    <div class="team_label teamB" [ngStyle]="{'background-color': matchInfo.team2Data.playoffColor}">
+    <div *ngIf="matchInfo.team2Data" class="team_label teamB" [ngStyle]="{'background-color': matchInfo.team2Data.playoffColor}">
         <span style="text-align: left;">{{matchInfo.team2Data.name}}</span>
         <img [src]="matchInfo.team2Data.monoLogoURL" alt="">
         <div class="score">{{matchInfo.team2Wins}}</div>
     </div>
 </div>
-<p *ngIf="sideOfBracket === 'left'"><a>G1</a> | <a>G2</a> | <a>G3</a> | <a>G4</a> | <a>G5</a></p>
+<p *ngIf="sideOfBracket === 'left' && matchInfo.team1Data"><a [routerLink]="[ '/playoff-match-page', {my_Obj: stringifyMatchInfo} ]">WYNIKI</a></p>
 
 <div class="box" *ngIf="sideOfBracket === 'right'">
-    <div class="team_label teamA" [ngStyle]="{'background-color': matchInfo.team1Data.playoffColor}">
+    <div *ngIf="matchInfo.team1Data" class="team_label teamA" [ngStyle]="{'background-color': matchInfo.team1Data.playoffColor}">
         <div class="score">{{matchInfo.team1Wins}}</div>
         <img [src]="matchInfo.team1Data.monoLogoURL" alt="">
         <span style="text-align: right;">{{matchInfo.team1Data.name}}</span>
     </div>
 
-    <div class="team_label teamB" [ngStyle]="{'background-color': matchInfo.team2Data.playoffColor}">
+    <div *ngIf="matchInfo.team2Data" class="team_label teamB" [ngStyle]="{'background-color': matchInfo.team2Data.playoffColor}">
         <div class="score">{{matchInfo.team2Wins}}</div>
         <img [src]="matchInfo.team2Data.monoLogoURL" alt="">
         <span style="text-align: right;">{{matchInfo.team2Data.name}}</span>
     </div>
 </div>
-<p *ngIf="sideOfBracket === 'right'"><a>G1</a> | <a>G2</a> | <a>G3</a> | <a>G4</a> | <a>G5</a></p>
+<p *ngIf="sideOfBracket === 'right' && matchInfo.team1Data"><a [routerLink]="[ '/playoff-match-page', {my_Obj: stringifyMatchInfo} ]">WYNIKI</a></p>

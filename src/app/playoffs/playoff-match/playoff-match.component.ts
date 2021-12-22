@@ -12,10 +12,11 @@ export class PlayoffMatchComponent implements OnInit {
   @Input() sideOfBracket?: string;
   teamA?: TeamModel;
   teamB?: TeamModel;
+  stringifyMatchInfo?: any;
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.matchInfo);
+    this.stringifyMatchInfo = JSON.stringify(this.matchInfo);
   }
 
 }

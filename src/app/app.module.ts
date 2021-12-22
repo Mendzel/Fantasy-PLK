@@ -13,7 +13,7 @@ import { TeamPageComponent } from './team-page/team-page.component';
 import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DataToSendService } from './service/data-to-send.service';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PlayerModalComponent } from './player-modal/player-modal.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatchPageComponent } from './match-page/match-page.component';
@@ -23,6 +23,8 @@ import { LoginComponent } from './login/login.component';
 import { PlayoffsComponent } from './playoffs/playoffs.component';
 import { AuctionsComponent } from './auctions/auctions.component';
 import { PlayoffMatchComponent } from './playoffs/playoff-match/playoff-match.component';
+import { PlayoffMatchPageComponent } from './playoffs/playoff-match/playoff-match-page/playoff-match-page.component';
+import { PlayoffScorePageComponent } from './playoffs/playoff-match/playoff-match-page/playoff-score-page/playoff-score-page.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { PlayoffMatchComponent } from './playoffs/playoff-match/playoff-match.co
     LoginComponent,
     PlayoffsComponent,
     AuctionsComponent,
-    PlayoffMatchComponent
+    PlayoffMatchComponent,
+    PlayoffMatchPageComponent,
+    PlayoffScorePageComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +53,8 @@ import { PlayoffMatchComponent } from './playoffs/playoff-match/playoff-match.co
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule
   ],
   providers: [DataToSendService],
   bootstrap: [AppComponent]

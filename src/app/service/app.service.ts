@@ -35,7 +35,13 @@ export class AppService {
       case 'Holandia':
         return 'flag-icon-nl';
       case 'Finlandia':
-        return 'flag-icon-fi'
+        return 'flag-icon-fi';
+      case 'Brazylia':
+        return 'flag-icon-br';
+      case 'Meksyk':
+        return 'flag-icon-mx';
+      case 'Słowenia':
+        return 'flag-icon-si';
     }
     return '';
   }
