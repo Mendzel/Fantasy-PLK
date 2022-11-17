@@ -21,7 +21,6 @@ import { ScorePageComponent } from './match-page/score-page/score-page.component
 import { RulesComponent } from './rules/rules.component';
 import { LoginComponent } from './login/login.component';
 import { PlayoffsComponent } from './playoffs/playoffs.component';
-import { AuctionsComponent } from './auctions/auctions.component';
 import { PlayoffMatchComponent } from './playoffs/playoff-match/playoff-match.component';
 import { PlayoffMatchPageComponent } from './playoffs/playoff-match/playoff-match-page/playoff-match-page.component';
 import { PlayoffScorePageComponent } from './playoffs/playoff-match/playoff-match-page/playoff-score-page/playoff-score-page.component';
@@ -41,7 +40,6 @@ import { PlayoffScorePageComponent } from './playoffs/playoff-match/playoff-matc
     RulesComponent,
     LoginComponent,
     PlayoffsComponent,
-    AuctionsComponent,
     PlayoffMatchComponent,
     PlayoffMatchPageComponent,
     PlayoffScorePageComponent

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuctionsComponent } from './auctions/auctions.component';
 import { FreeAgentsComponent } from './free-agents/free-agents.component';
 import { LoginComponent } from './login/login.component';
 import { MatchPageComponent } from './match-page/match-page.component';
@@ -13,7 +12,6 @@ import { TeamPageComponent } from './team-page/team-page.component';
 const appRoutes: Routes = [
   { path: 'table-and-fixture', component: TableAndFixtureComponent },
   { path: 'free-agents', component: FreeAgentsComponent },
-  { path: 'auctions', component: AuctionsComponent },
   { path: 'playoffs', component: PlayoffsComponent },
   { path: 'team-page/:teamName', component: TeamPageComponent },
   { path: 'match-page/:round/:matchID', component: MatchPageComponent },

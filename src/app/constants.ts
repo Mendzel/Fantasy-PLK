@@ -18,10 +18,10 @@ export const CLUBS = [
 ];
 
 export const FANTASY_CLUBS = [
-  'Białe Kaski Robią Laski',
+  'BKRL',
   'Dzikie Dziki',
   'Coconut Club',
-  'Mokebe Power',
+  'My Power',
   'Orki z Majorki',
   'Raca Squad',
   'Alaskańskie Smoki',

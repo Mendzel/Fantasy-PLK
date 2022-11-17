@@ -8,7 +8,7 @@ export class AuthService {
   isAdmin: boolean = false;
   constructor(private router: Router) { }
   login(data: any){
-    if(data.login === 'lolmendzel@gmail.com' && data.password === 'BabyShark97'){
+    if(data.login === 'admin@gmail.com' && data.password === 'BabyShark123'){
       this.isAdmin = true;
       this.router.navigate(['']);
       return true;
