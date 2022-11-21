@@ -43,13 +43,13 @@ export class FixtureComponent implements OnInit {
 
   assignTeamLogo(teamName: string) {
     switch(teamName){
-      case 'Mokebe Power':
+      case 'My Power':
         return 'https://i.imgur.com/tFsWzKx.png'
       case 'Coconut Club':
         return 'https://i.imgur.com/LXxywEj.png'
       case 'Dzikie Dziki':
         return 'https://i.imgur.com/AKgK3Du.png'
-      case 'Białe Kaski Robią Laski':
+      case 'BKRL':
         return 'https://i.imgur.com/fyk4HAH.png'
       case 'Orki z Majorki':
         return 'https://i.imgur.com/VXzRtVU.png'
